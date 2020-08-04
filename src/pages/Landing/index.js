@@ -6,6 +6,9 @@ import StudyIcon from '../../assets/images/icons/study.svg'
 import GiveClassesIcon from '../../assets/images/icons/give-classes.svg'
 import PurpleHeartIcon from '../../assets/images/icons/purple-heart.svg'
 
+import './styles.css'
+import '../../assets/styles/global.css'
+
 const Landing = () => {
 
   return (
