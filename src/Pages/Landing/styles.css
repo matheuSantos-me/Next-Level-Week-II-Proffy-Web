@@ -1,0 +1,85 @@
+#page-landing {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--color-text-in-primary);
+  background: var(--color-primary);
+}
+
+.logo-container img {
+  height: 10rem;
+}
+
+.hero-img {
+  width: 100%;
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 3.2rem;
+}
+
+.logo-container h2 {
+  font-weight: 500;
+  font-size: 2.4rem;
+  line-height: 4.6rem;
+  margin-top: 0.8rem;
+}
+
+.container-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 4rem 0;
+}
+
+.container-buttons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30rem;
+  height: 10.4rem;
+  border-radius: 0.8rem;
+  text-decoration: none;
+  font: 700 2.0rem Achivo;
+  color: var(--color-button-text);
+  transition: background-color 0.3s;
+}
+
+.container-buttons :first-child {
+  margin-right: 1.6rem;
+}
+
+.container-buttons a img {
+  width: 4rem;
+}
+
+.container-buttons a.study {
+  background: var(--color-primary-lighter);
+}
+
+.container-buttons a.give-classes {
+  background: var(--color-secondary);
+}
+
+.container-buttons a.study:hover {
+  background: var(--color-primary-light);
+}
+
+.container-buttons a.give-classes:hover {
+  background: var(--color-secondary-dark);
+}
+
+.total-connections {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+
+.total-connections img {
+  margin-left: 0.8rem;
+}
