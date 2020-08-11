@@ -22,12 +22,12 @@ const Landing = () => {
         <img src={LandingImg} alt="Plataforma de estudos" className="hero-img" />
 
         <div className="container-buttons">
-          <Link to="/ListTeacher" className="study">
+          <Link to="/study" className="study">
             <img src={Study} alt="Estudar" /> 
             Estudar
           </Link>
 
-          <Link to="/FormTeacher" className="give-classes">
+          <Link to="/give-classes" className="give-classes">
             <img src={GiveClasses} alt="Dar aulas" />
             Dar aulas
           </Link>

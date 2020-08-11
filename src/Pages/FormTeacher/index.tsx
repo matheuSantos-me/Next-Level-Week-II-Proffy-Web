@@ -1,10 +1,12 @@
 import React from 'react'
 
+import Header from '../../components/Header'
+
 const FormTeacher = () => {
 
   return (
-    <div>
-      <h2>OIOIOIOIOIO</h2>
+    <div id="page-teacher-list" className="container">
+      <Header title="Que incrível que você quer dar aulas." />
     </div>
   )
 }
