@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import Logo from '../../assets/images/logo.svg'
 import ArrowBackLeft from '../../assets/images/icons/back.svg'
 
+import './styles.css'
+
 interface HeaderProps {
   title: string
 }
