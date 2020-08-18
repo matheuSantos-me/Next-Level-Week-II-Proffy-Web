@@ -112,7 +112,6 @@
 
 @media (min-width: 700px) {
   #page-teacher-form {
-    width: 100%;
     max-width: 100vh;
   }
 
