@@ -13,6 +13,7 @@ import './styles.css'
 
 const FormTeacher = () => {
   let history = useHistory()
+  const [state, setState] = useState()
   const [name, setName] = useState('')
   const [avatar, setAvatar] = useState('')
   const [whatsapp, setWhatsapp] = useState('')
