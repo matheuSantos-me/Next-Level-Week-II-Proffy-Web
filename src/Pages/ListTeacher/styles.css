@@ -116,7 +116,7 @@
 
 @media (min-width: 700px) {
   #page-teacher-list {
-    max-width: 100%;
+    width: 100%;
   }
 
   #search-teachers {
@@ -124,7 +124,7 @@
     grid-template-columns: repeat(4, 1fr);
     column-gap: 16px;
     position: absolute;
-    bottom: -28px;
+    top: 245px;
   }
 
   #search-teachers .input-block + .input-block,
