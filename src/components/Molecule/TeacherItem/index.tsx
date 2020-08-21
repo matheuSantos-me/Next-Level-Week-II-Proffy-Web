@@ -45,12 +45,11 @@ const TeacherItem: React.FC<Props> = ({ teacher }) => {
             </p>
 
             <a target="_blank" onClick={handleCreateConnection} href={`https://wa.me/${teacher.whatsapp}`}>
-              <img src={whatsappIcon} alt="Whatsapp" />
-              Entrar em contato
+              <img src={whatsappIcon} alt="Whatsapp" /> Entrar em contato
             </a>
           </footer>
         </article>
-  );
+  )
 }
 
-export default TeacherItem;
+export default TeacherItem
