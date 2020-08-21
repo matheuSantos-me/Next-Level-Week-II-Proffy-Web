@@ -1,5 +1,7 @@
 import React, { useState, FormEvent } from 'react'
+import { useHistory } from 'react-router-dom'
 
+import Api from '../../services/Api'
 import PageHeader from '../../components/Molecule/PageHeader'
 import Input from '../../components/Atom/Input'
 import Textarea from '../../components/Atom/Textarea'
@@ -10,36 +12,52 @@ import warningIcon from '../../assets/images/icons/warning.svg'
 import './styles.css'
 
 function TeacherForm(){
-  const [name, setName] = useState('');
-  const [avatar, setAvatar] = useState('');
-  const [whatsapp, setWhatsapp] = useState('');
-  const [bio, setBio] = useState('');
+  let history = useHistory()
+  const [name, setName] = useState('')
+  const [avatar, setAvatar] = useState('')
+  const [whatsapp, setWhatsapp] = useState('')
+  const [bio, setBio] = useState('')
+  const [subject, setSubject] = useState('')
+  const [cost, setCost] = useState('')
+  const [scheduleItems, setScheduleItems] = useState([{ week_day: 0, from: '', to: '' }])
 
-  const [subject, setSubject] = useState('');
-  const [cost, setCost] = useState('');
-
-  const [scheduleItems, setScheduleItems] = useState([
-    { week_day: 0, from: '', to: '' }
-  ]);
-
-  function addNewScheduleItem(){
+  const addNewScheduleItem = () => {
     setScheduleItems([
-      ...scheduleItems, 
+      ...scheduleItems,
       { week_day: 0, from: '', to: '' }
-    ]);
+    ])
   }
 
-  function handleCreateClass(e: FormEvent){
-    e.preventDefault();
 
-    console.log({
+  const setScheduleItemValue = (position: number, field: string, value: string) => {
+    const updateScheduleItems = scheduleItems.map((scheduleItem, index) => {
+      if (index === position) {
+        return { ...scheduleItem, [field]: value}
+      }
+
+      return scheduleItem
+    })
+    setScheduleItems(updateScheduleItems)
+  }
+
+
+  const handleCreateClass = (e: FormEvent) => {
+    e.preventDefault()
+
+    Api.post('classes', {
       name,
       avatar,
       whatsapp,
       bio,
       subject,
-      cost
-    });
+      cost: Number(cost), 
+      schedule: scheduleItems
+    }).then(() => {
+      alert('Cadastro realizado com sucesso!')
+      history.push('/')
+    }).catch(() => {
+      alert('Error no cadastro, tente novamente!')
+    })
   }
 
   return(
@@ -121,17 +139,17 @@ function TeacherForm(){
           <fieldset>
             <legend>
               Horários disponíveis
-              <button type="button" onClick={addNewScheduleItem}>
-                + Novo horário
-              </button>
+              <button type="button" onClick={addNewScheduleItem}>+ Novo horário</button>
             </legend>
 
-            {scheduleItems.map(scheduleItem => {
-              return(
+            {scheduleItems.map((scheduleItem, index) => {
+              return (
                 <div key={scheduleItem.week_day} className="schedule-item">
                   <Select 
                     name="week_day" 
-                    label="Dia da semana" 
+                    label="Dia da semana"
+                    value={scheduleItem.week_day}
+                    onChange={e => setScheduleItemValue(index, 'week_day', e.target.value )}
                     options={[
                       { value: '0', label: 'Domingo' },
                       { value: '1', label: 'Segunda-Feira' },
@@ -142,26 +160,21 @@ function TeacherForm(){
                       { value: '6', label: 'Sábado' }
                     ]}
                   />
+
                   <Input name="from" label="Das" type="time"/>
+                  
                   <Input name="to" label="Até" type="time"/>
                 </div>
-              );
+              )
             })}
           </fieldset>
 
           <footer>
-            <p>
-              <img src={warningIcon} alt="Aviso importante" />
-              Importante! <br />
-              Preencha todos os dados
-            </p>
-            <button type="submit">
-              Salvar cadastro
-            </button>
+            <p><img src={warningIcon} alt="Aviso importante" /> Importante! <br /> Preencha todos os dados</p>
+            <button type="submit">Salvar cadastro</button>
           </footer>
         </form>
       </main>
-
     </div>
   )
 }
